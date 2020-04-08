@@ -1,0 +1,10 @@
+.bgImage{
+	background-color: lightgray;
+	text-align: center;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+.theUl{
+	list-style-type: none;
+}
