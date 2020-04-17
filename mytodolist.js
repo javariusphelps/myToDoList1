@@ -2,26 +2,34 @@
 //traverse the DOM to get items above by their ID
 //function(event)-getting even back for said event
 
-var input = document.getElementById("myInput");
-var button = document.getElementById("btn");
-var list = document.getElementById("myList");
+var input = $("#myInput"); // getting a DOM element in jQuery
+var button = $("#btn");
+var list =$("#myList");
 
-document.addEventListener("click", function(event){
+// look up how to do a click event in jQuery
+// hint: $(document).click(function(event) { ... });
+$(document).click(function(event){
 	if(event.target.tagName.toLowerCase() === 'li') {
-		var removeTodo = event.target;
-		list.removeChild(removeTodo);
+		var removeTodo = $(event.target);
+		removeTodo.css('text-decoration', 'line-through');
+
+		// do a set timeout for one second
+		// figure out how to do a setTimeout in jquery
+		setTimeout(function(){
+			removeTodo.remove();
+		},1000);
 	}
 });
 
-button.addEventListener("click", function(event){
-	if(input.value == ""){
+$(button).click(function(event){
+	if($('input').val() == ""){
 		return; 
 	}
-	var value = document.createTextNode(input.value);
+	var value = ($('input').val());
 	var toDo = document.createElement("li");
-	toDo.appendChild(value);
-	list.appendChild(toDo);
-	input.value = "";
+	toDo.append(value);
+	list.append(toDo);
+	$('input').val("");
 	console.log(toDo);
 });
 
